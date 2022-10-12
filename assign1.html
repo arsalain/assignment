@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    #container{
+      margin:0px auto;
+      width:800px;
+      text-align:center;
+    }
+    .myTable{
+      width:800px;
+      border: 1px solid #aaa;
+    }
+    .myTable {
+  counter-reset: serial-number;  /* Set the serial number counter to 0 */
+}
+
+.myTable td:first-child:before {
+  counter-increment: serial-number;  /* Increment the serial number counter */
+  content: counter(serial-number);  /* Display the counter */
+}
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h2>Dynamically Add Table Rows Top and Bottom using Html</h2> 
+    <button id="add-to-top">Add Row Top</button>
+    <button  id="add-to-btm">Add Row Bottom</button>
+    <br>
+    <br>
+    
+        <input type="text" id="name" placeholder="Enter First Name">
+        <input type="text" id="lastname" placeholder="Enter Last Name">
+        <input type="text" id="city" placeholder="Enter City">
+        <input type="text" id="country" placeholder="Enter Country">
+    
+    <table class="myTable">
+        <thead>
+      <tr >
+        <th>SL.No.</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>City</th>
+        <th>Country</th>
+      </tr>
+      </thead>
+        <tbody >
+            <tr> 
+              <td></td>
+              <td>Syed Mudasir</td>
+              <td>Hussain</td>
+              <td>Bangalore</td>
+              <td>India</td>
+            </tr>
+            <tr> 
+              <td></td>
+              <td>Rajesh</td>
+              <td>Kumar</td>
+              <td>Hyderabad</td>
+              <td>India</td>
+            </tr>
+            <tr> 
+              <td></td>
+              <td>Ramesh</td>
+              <td>Krishnan</td>
+              <td>Delhi</td>
+              <td>India</td>
+            </tr>
+            </tbody>
+    </table>
+  </div>        
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+        $("#add-to-btm").click(function(){
+            var name = $("#name").val();
+            var lastname = $("#lastname").val();
+            var city = $("#city").val();
+            var country= $("#country").val();
+            var markup = "<tr><td></td><td>"  + name + "</td><td>" + lastname + "</td><td>" + city + "</td><td>" + country + "</td></tr>";
+            $("table tbody").append(markup);
+        });
+        $("#add-to-top").click(function(){
+            var name = $("#name").val();
+            var lastname = $("#lastname").val();
+            var city = $("#city").val();
+            var country= $("#country").val();
+            var markup = "<tr><td></td><td>" + name + "</td><td>" + lastname + "</td><td>" + city + "</td><td>" + country +"</td></tr>";
+            $("table").find('tbody:first').prepend(markup);
+        });
+    });
+</script>
+</body>
+</html>

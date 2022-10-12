@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+      <h2>Verifying the occurence of the letter</h2>
+      <br /><br />
+      <form>
+        <div class="sentence">Enter a Sentence:</div>
+        <input type="textarea" id="sentence" />
+        <div class="sentence letter">Enter a Letter:</div>
+        <input type="text" id="letter" />
+        <button type="button" id="sent">Submit</button>
+      </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#sent").click(function(){
+        var occur = 0;
+        var count = 1;
+        var sentence = $("#sentence").val();;
+        var letter = $("#letter").val();;
+
+        for (i = 0; i < sentence.length; i++) {
+          if (sentence.charAt(i) == letter) {
+            occur++;
+          }
+          if (occur == count) {
+            break;
+          }
+        }
+        if (i < sentence.length - 1) {
+          alert("The Result: " + sentence.substring(i + 1));
+        } else {
+          alert("The letter doesn't exist in the sentence");
+        }
+      })
+    })
+    </script>
+</body>
+</html>
